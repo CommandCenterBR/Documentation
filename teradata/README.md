@@ -1,4 +1,3 @@
-
 Teradata REST Installation and Configuration
 https://paypal.box.com/s/xmn5t0g97aqpvg6ij0zzheagh6has1md
 
