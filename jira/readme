@@ -1,1 +1,23 @@
+Description:
+Server Side application to handle all the JIRA communication with READ access with the objective to gather all the current issue details for the region.
 
+API URLs
+Please follow:
+Onboarding Process: https://engineering.paypalcorp.com/confluence/display/jiraproduct/API 
+Policy and samples to be agreed: https://engineering.paypalcorp.com/confluence/display/jiraproduct/API
+6.3.15 api docs: https://docs.atlassian.com/jira/REST/6.3.15/
+
+examples:
+https://engineering.paypalcorp.com/confluence/display/ETE/JM-REST+User+Examples
+https://developer.atlassian.com/jiradev/jira-apis/jira-rest-apis/jira-rest-api-tutorials/jira-rest-api-version-2-tutorial
+Get Cookie:
+curl -D- -k -u "userid:password" -c cookie_jar -H "Accept: application/json" -o - -s -w "\n%{http_code}\n" -X GET https://eshome-qa.es.paypalcorp.com/jira-uat/rest/auth/latest/session
+
+Validate Cookie:
+curl -D- -k -b cookie_jar  -o - -s -w "\n%{http_code}\n"  https://eshome-qa.es.paypalcorp.com/jira-uat/rest/auth/latest/session
+
+Get Tickets:
+curl -D- -k -b cookie_jar  -o - -s -w "\n%{http_code}\n" -X GET -H "Content-Type: application/json" https://eshome-qa.es.paypalcorp.com/jira-uat/rest/api/2/search?jql=assignee=rameshbabu&startAt=1&maxResults=5&fields=id,key
+
+Delete Session using Cookie
+curl -D- -k -b cookie_jar -o - -s -w "\n%{http_code}\n" -X DELETE https://eshome-qa.es.paypalcorp.com/jira-uat/rest/auth/latest/session
